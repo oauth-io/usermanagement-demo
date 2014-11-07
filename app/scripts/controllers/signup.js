@@ -11,6 +11,10 @@ angular.module('usermanagementTestApp')
   .controller('SignupCtrl', function ($rootScope, $scope, $location, OAuth, User) {
   	$rootScope.menu = 'signup';
 
+  	if (User.isLogged()) {
+  		return $location.path('/user');
+  	}
+
   	$scope.userInfo = {};
 	$scope.signup = function(data) {
 		User.signup(data).done(function(user) {

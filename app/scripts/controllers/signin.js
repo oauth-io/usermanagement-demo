@@ -13,7 +13,7 @@ angular.module('usermanagementTestApp')
 
 
   	if (User.isLogged()) {
-  		$location.path('/user');
+  		return $location.path('/user');
   	}
 
 	$scope.signin = function(email, password) {
