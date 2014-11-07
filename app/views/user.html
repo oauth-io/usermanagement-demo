@@ -1,0 +1,45 @@
+<img style="position:relative; top: 5px; margin-left: 10px" ng-repeat="provider in me.providers" ng-click="toggleProvider(provider)" class="pull-right img-responsive img-rounded" ng-src="https://oauth.io/api/providers/{{provider||'facebook'}}/logo-button.png" width="48">
+<h3>{{me.data.firstname}} {{me.data.lastname}}</h3>
+<p>{{me.data.email}}</p>
+<hr>
+<div ng-init="addData = false; dataValue = {}">
+	<div>
+
+	</div>
+	<div ng-show="addData">
+		<div class="row">
+			<div class="col-sm-8">
+				<input type="text" class="form-control" ng-model="dataField" placeholder="Field" ng-show="addData">
+			</div>
+			<div class="col-sm-4">
+				<select name="" class="form-control" ng-model="dataType" ng-init="dataType='string'">
+					<option value="string">String</option>
+					<option value="img">Image</option>
+					<option value="number">Number</option>
+					<option value="json">JSON</option>
+				</select>
+			</div>
+		</div>
+		<div style="margin: 10px 0">
+			<input type="text" class="form-control" ng-model="dataValue.string" placeholder="Value" ng-show="dataType == 'string'">
+			<input type="text" class="form-control" ng-model="dataValue.img" placeholder="Image URL" ng-show="dataType == 'img'">
+			<input type="text" class="form-control" ng-model="dataValue.number" placeholder="Number" ng-show="dataType == 'number'">
+			<textarea class="form-control" ng-show="dataType == 'json'"></textarea>
+		</div>
+	</div>
+	<div ng-hide="addData">
+		<button class="btn btn-success" ng-click="addData = true">Add some data</button>
+	</div>
+	<div ng-show="addData">
+		<button class="btn btn-success" ng-click="addData = false">Add</button> <button class="btn btn-default" ng-click="addData = false">Cancel</button>
+	</div>
+</div>
+<hr>
+<p>Link your account with other social identity:</p>
+<div class="row social-container signup" style="margin-bottom: 20px">
+	<div ng-repeat="provider in providersAvailable" ng-hide="hasProvider(provider)" class="col-xs-4 col-sm-2">
+		<img ng-click="toggleProvider(provider)" class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="{{provider}}" ng-src="https://oauth.io/api/providers/{{provider||'facebook'}}/logo-button.png">
+	</div>
+</div>
+<hr>
+<pre>Me: {{me|json}}</pre>
