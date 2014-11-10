@@ -16,6 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'ui.bootstrap',
     'oauthio'
   ])
   .config(function ($routeProvider) {
@@ -53,5 +54,12 @@ angular
     if ($rootScope.isLogged) {
       $rootScope.me = User.getIdentity();
     }
-    $rootScope.providersAvailable = ['facebook', 'twitter', 'google', 'linkedin', 'github', 'vk'];
+    $rootScope.providersAvailable = [
+      'facebook',
+      'twitter',
+      'google',
+      'linkedin',
+      'github',
+      'vk'
+    ];
   });

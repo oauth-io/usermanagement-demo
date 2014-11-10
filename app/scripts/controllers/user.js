@@ -8,7 +8,7 @@
  * Controller of the usermanagementTestApp
  */
 angular.module('usermanagementTestApp')
-  .controller('UserCtrl', function ($rootScope, $scope, $location, User, OAuth) {
+  .controller('UserCtrl', function ($rootScope, $scope, $location, $modal, User, OAuth) {
   	$rootScope.menu = 'user';
 
   	if ( ! User.isLogged()) {
@@ -30,5 +30,43 @@ angular.module('usermanagementTestApp')
   			});
   		}
   	};
+
+  	$scope.select = function(provider) {
+  		var instance = $modal.open({
+  			templateUrl: '/views/modal/provider.html',
+  			controller: 'ProviderCtrl',
+  			resolve: {
+  				provider: function() { return provider; }
+  			}
+  		});
+  		instance.result.then(function(result) {
+  			if (result === 'unlink') {
+  				$scope.toggleProvider(provider);
+  			}
+  		});
+  	};
+
+  	$scope.editData = function(data) {
+  		console.log('editData', data);
+  		var instance = $modal.open({
+			templateUrl: '/views/modal/data.html',
+			controller: 'DataModalCtrl',
+			size: 'sm',
+			resolve: {
+				data: function() {
+					return {
+						key: data.key,
+						value: data.value,
+						type: typeof data.value
+					};
+				}
+			}
+		});
+		instance.result.then(function() {
+			$scope.editableData = $rootScope.me.getEditableData();
+		});
+  	};
+
 	$rootScope.me.getProviders();
+	$scope.editableData = $rootScope.me.getEditableData();
   });
