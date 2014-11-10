@@ -15,7 +15,6 @@ angular.module('usermanagementTestApp')
   		return $location.path('/user');
   	}
 
-  	$scope.userInfo = {};
 	$scope.signup = function(data) {
 		User.signup(data).done(function(user) {
             $rootScope.isLogged = true;
