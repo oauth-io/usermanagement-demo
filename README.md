@@ -1,4 +1,5 @@
-Test of OAuth.io with the user management feature.
+OAuth.io - User management Demo
+===============================
 
 [Demo](http://thyb.github.io/usermanagement-test)
 
@@ -103,8 +104,6 @@ OAuth.popup(provider).then(function(res) {
 });
 ```
 
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #5cb85c">Tested & working</div>
-
 Get the connected user
 ----------------------
 
@@ -121,8 +120,6 @@ User.refreshIdentity().done(function(user) {
     //todo with `user`
 })
 ```
-
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #5cb85c">Tested & working</div>
 
 Know if the user is authenticated
 ---------------------------------
