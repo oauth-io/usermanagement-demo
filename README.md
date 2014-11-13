@@ -5,36 +5,12 @@ Test of OAuth.io with the user management feature.
 Documentation
 -------------
 
-<style>
-.badge{
-display: inline-block;
-min-width: 10px;
-padding: 3px 7px;
-font-size: 12px;
-font-weight: 700;
-color: #fff;
-line-height: 1;
-vertical-align: baseline;
-white-space: nowrap;
-text-align: center;
-background-color: #999;
-border-radius: 10px;
-}
-.pull-right {
-  float: right;
-}
-</style>
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #5cb85c">Tested & working
-</div>
-
 Installation
 ------------
 
 You need to enable the feature in your OAuth.io dashboard in the `users` tab. For that, you need to get API Key from stormpath and copy paste them in OAuth.io.
 
 Install the OAuth.io javascript SDK from the branch feature/refactoring: https://github.com/oauth-io/oauth-js/tree/feature/refactoring
-
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #5cb85c">Tested & working</div>
 
 Signup
 ------
@@ -104,8 +80,6 @@ OAuth.popup('twitter').then(function(twitter) {
 });
 ```
 
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #5cb85c">Tested & working</div>
-
 Signin
 ------
 
@@ -162,8 +136,6 @@ else {
 }
 ```
 
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #5cb85c">Tested & working</div>
-
 Update your user data
 ---------------------
 
@@ -176,7 +148,6 @@ user.save().done(function() {
     //handle `err``
 });
 ```
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #5cb85c">Tested & working</div>
 
 Add all custom data you want
 ----------------------------
@@ -190,8 +161,6 @@ user.data.someData = {
 user.save();
 ```
 
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #d9534f">Not tested yet</div>
-
 Reset password (or lost password)
 ---------------------------------
 
@@ -204,7 +173,6 @@ User.resetPassword(email).done(function() {
 User.confirmResetPassword(newPassword, key);
 ```
 
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #d9534f">Not implemented yet</div>
 
 Change password
 ---------------
@@ -213,8 +181,6 @@ Change password
 var user = User.getIdentity();
 user.changePassword(oldPassword, newPassword);
 ```
-
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #5cb85c">Tested & working</div>
 
 Attach social identity to an account
 ------------------------------------
@@ -228,8 +194,6 @@ OAuth.popup('google').then(function(google) {
    //Your user are now able to signin with Google
 });
 ```
-
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #5cb85c">Tested & working</div>
 
 The list of providers attached to an account
 ----------------------------------------------
@@ -249,8 +213,6 @@ user.getProviders().done(function(providers) {
    console.log(providers);
 });
 ```
-
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #5cb85c">Tested & working</div>
 
 Logout
 ------
