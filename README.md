@@ -5,7 +5,27 @@ Test of OAuth.io with the user management feature.
 Documentation
 -------------
 
-<div class="badge pull-right" style="position: relative; top: 8px; background-color: #5cb85c">Tested & working</div>
+<style>
+.badge{
+display: inline-block;
+min-width: 10px;
+padding: 3px 7px;
+font-size: 12px;
+font-weight: 700;
+color: #fff;
+line-height: 1;
+vertical-align: baseline;
+white-space: nowrap;
+text-align: center;
+background-color: #999;
+border-radius: 10px;
+}
+.pull-right {
+  float: right;
+}
+</style>
+<div class="badge pull-right" style="position: relative; top: 8px; background-color: #5cb85c">Tested & working
+</div>
 
 Installation
 ------------
