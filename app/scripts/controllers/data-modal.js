@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name usermanagementTestApp.controller:AboutCtrl
+ * @name usermanagementTestApp.controller:DataModalCtrl
  * @description
- * # GettingStartedCtrl
+ * # DataModalCtrl
  * Controller of the usermanagementTestApp
  */
 angular.module('usermanagementTestApp')

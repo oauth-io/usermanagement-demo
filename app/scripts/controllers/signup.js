@@ -8,7 +8,7 @@
  * Controller of the usermanagementTestApp
  */
 angular.module('usermanagementTestApp')
-  .controller('SignupCtrl', function ($rootScope, $scope, $location, OAuth, User) {
+  .controller('SignupCtrl', function ($rootScope, $scope, $location, $modal, OAuth, User) {
   	$rootScope.menu = 'signup';
 
   	if (User.isLogged()) {
@@ -22,6 +22,7 @@ angular.module('usermanagementTestApp')
             $location.path('/user');
             $rootScope.$apply();
 		}).fail(function(err) {
+			window.alert('error: ' + JSON.stringify(err));
 			console.log('error', err);
 		});
 	};
@@ -35,9 +36,24 @@ angular.module('usermanagementTestApp')
                 $location.path('/user');
                 $rootScope.$apply();
             }).fail(function(err) {
+            	console.log('failllll', err);
+            	if (err.responseJSON.data.email && err.responseJSON.data.email === 'missing') {
+            		$modal.open({
+            			controller: 'EmailModalCtrl',
+            			templateUrl: 'views/modal/email.html',
+            			resolve: {
+            				data: function() { return result; }
+            			}
+            		});
+            	}
+            	else {
+					window.alert('error: ' + JSON.stringify(err));
+            	}
                 $scope.error = err;
             });
         }).fail(function(err) {
+        	window.alert('error: ' + JSON.stringify(err));
+        	console.log(err);
             $scope.error = err;
         });
 	};

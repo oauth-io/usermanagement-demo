@@ -25,7 +25,9 @@ angular.module('usermanagementTestApp')
   		}
   		else {
   			OAuth.popup(provider).done(function(res) {
-  				$rootScope.me.addProvider(res);
+  				$rootScope.me.addProvider(res).fail(function(err) {
+  					window.alert('error: ' + JSON.stringify(err));
+  				});
 	  			$rootScope.$apply();
   			});
   		}
@@ -33,7 +35,7 @@ angular.module('usermanagementTestApp')
 
   	$scope.select = function(provider) {
   		var instance = $modal.open({
-  			templateUrl: '/views/modal/provider.html',
+  			templateUrl: 'views/modal/provider.html',
   			controller: 'ProviderCtrl',
   			resolve: {
   				provider: function() { return provider; }
@@ -49,7 +51,7 @@ angular.module('usermanagementTestApp')
   	$scope.editData = function(data) {
   		console.log('editData', data);
   		var instance = $modal.open({
-			templateUrl: '/views/modal/data.html',
+			templateUrl: 'views/modal/data.html',
 			controller: 'DataModalCtrl',
 			size: 'sm',
 			resolve: {

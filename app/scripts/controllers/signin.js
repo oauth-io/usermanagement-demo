@@ -23,6 +23,7 @@ angular.module('usermanagementTestApp')
 	  		$location.path('/user');
 	  		$rootScope.$apply();
         }).fail(function(err) {
+        	window.alert('error:' + JSON.stringify(err));
             $scope.error = err;
         });
 	};
@@ -35,10 +36,14 @@ angular.module('usermanagementTestApp')
                 $location.path('/user');
                 $rootScope.$apply();
             }).fail(function(err) {
+	           	window.alert('error: ' + JSON.stringify(err));
+				console.log(err);
                 $scope.error = err;
             });
         }).fail(function(err) {
+           	console.log(err);
             $scope.error = err;
+            window.alert('error:' + JSON.stringify(err));
         });
 	};
   });
