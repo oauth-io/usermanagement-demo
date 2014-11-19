@@ -16,18 +16,20 @@ angular.module('usermanagementTestApp')
   	}
 
 	$scope.signup = function(data) {
+        $scope.errorForm = null;
 		User.signup(data).done(function(user) {
             $rootScope.isLogged = true;
             $rootScope.me = user;
             $location.path('/user');
             $rootScope.$apply();
 		}).fail(function(err) {
-			window.alert('error: ' + JSON.stringify(err));
-			console.log('error', err);
+			$scope.errorForm = err;
+            $scope.$apply();
 		});
 	};
 
 	$scope.signupSocial = function(provider) {
+        $scope.errorSocial = null;
 		OAuth.popup(provider).done(function(result) {
             User.signup(result).done(function(user) {
             	console.log('signed up', user);
@@ -36,7 +38,6 @@ angular.module('usermanagementTestApp')
                 $location.path('/user');
                 $rootScope.$apply();
             }).fail(function(err) {
-            	console.log('failllll', err);
             	if (err.responseJSON.data.email && err.responseJSON.data.email === 'missing') {
             		$modal.open({
             			controller: 'EmailModalCtrl',
@@ -47,14 +48,10 @@ angular.module('usermanagementTestApp')
             		});
             	}
             	else {
-					window.alert('error: ' + JSON.stringify(err));
+                    $scope.errorSocial = err;
+                    $scope.$apply();
             	}
-                $scope.error = err;
             });
-        }).fail(function(err) {
-        	window.alert('error: ' + JSON.stringify(err));
-        	console.log(err);
-            $scope.error = err;
         });
 	};
   });

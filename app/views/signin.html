@@ -10,6 +10,7 @@
 	  		<div ng-hide="signupInfo.status == 'success'">
     			<div ng-init="connect=true" ng-hide="connected" id="socialConnect">
         			<h3><span>Sign in with</span></h3>
+		  			<p ng-show="errorSocial" class="alert alert-danger">An error occured while trying to authenticate you.</p>
 					<div class="row social-container signup">
 						<div class="col-xs-4 col-sm-2">
 							<img class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="Twitter" src="https://oauth.io/api/providers/twitter/logo-button.png" data-provider="twitter" ng-click="signinSocial('twitter')">
@@ -37,6 +38,7 @@
 				</div>
 				<div style="margin-top: 30px">
 					<h3><span>Or with your email address</span></h3>
+					<p ng-show="errorEmailPW" class="alert alert-danger">Bad combination email/password.</p>
 					<form role="form" class="form-vertical" style="margin-top:0px ">
 					  	<div style="margin-bottom: 15px" class="form-group">
 					  		<div class="input-group margin-bottom-sm">

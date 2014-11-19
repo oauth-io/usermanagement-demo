@@ -9,6 +9,7 @@
 	  		<div ng-hide="signupInfo.status == 'success'">
     			<div ng-init="connect=true" ng-hide="connected" id="socialConnect">
         			<h3><span>Sign up with</span></h3>
+		  			<p ng-show="errorSocial" class="alert alert-danger">An error occured while trying to registering you. Do you already have an account? <a href="#/signin">signin</a></p>
 					<div class="row social-container signup">
 						<div class="col-xs-4 col-sm-2">
 							<img class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="Twitter" src="https://oauth.io/api/providers/twitter/logo-button.png" data-provider="twitter" ng-click="signupSocial('twitter')">
@@ -36,6 +37,7 @@
 				</div>
 				<div style="margin-top: 30px">
 					<h3><span>Or with your email address</span></h3>
+					<p ng-show="errorForm" class="alert alert-danger">An error occured while registering you: {{errorForm.responseJSON.message}}</p>
 					<form role="form" class="form-vertical" style="margin-top:0px ">
 					  	<div style="margin-bottom: 15px" class="form-group">
 						  	<div class="input-group margin-bottom-sm">

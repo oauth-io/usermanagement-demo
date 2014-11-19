@@ -25,7 +25,10 @@ angular.module('usermanagementTestApp')
   		}
   		else {
   			OAuth.popup(provider).done(function(res) {
-  				$rootScope.me.addProvider(res).fail(function(err) {
+  				$rootScope.me.addProvider(res).done(function() {
+  					$scope.editableData = $rootScope.me.getEditableData();
+  					$scope.$apply();
+  				}).fail(function(err) {
   					window.alert('error: ' + JSON.stringify(err));
   				});
 	  			$rootScope.$apply();
@@ -67,6 +70,15 @@ angular.module('usermanagementTestApp')
 		instance.result.then(function() {
 			$scope.editableData = $rootScope.me.getEditableData();
 		});
+  	};
+
+  	$scope.removeData = function(data) {
+      //return false;
+  		if (window.confirm('Are you sure to delete this data?')) {
+  			$rootScope.me.data[data.key] = null;
+  			$rootScope.me.save();
+        $scope.editableData = $rootScope.me.getEditableData();
+  		}
   	};
 
 	$rootScope.me.getProviders();

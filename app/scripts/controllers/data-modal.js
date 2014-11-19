@@ -41,6 +41,9 @@ angular.module('usermanagementTestApp')
   			$rootScope.me.data[lastKey] = null;
   		}
   		var value = getValue();
+  		if (value === null || value === '') {
+  			return window.alert('Error: the value can\'t be null');
+  		}
   		$rootScope.me.data[$scope.data.key] = value;
   		console.log($rootScope.me.data);
   		$rootScope.me.save();
