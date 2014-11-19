@@ -12,23 +12,8 @@
         			<h3><span>Sign in with</span></h3>
 		  			<p ng-show="errorSocial" class="alert alert-danger">An error occured while trying to authenticate you.</p>
 					<div class="row social-container signup">
-						<div class="col-xs-4 col-sm-2">
-							<img class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="Twitter" src="https://oauth.io/api/providers/twitter/logo-button.png" data-provider="twitter" ng-click="signinSocial('twitter')">
-						</div>
-						<div class="col-xs-4 col-sm-2">
-							<img data-provider="facebook" ng-click="signinSocial('facebook')" class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="Facebook" src="https://oauth.io/api/providers/facebook/logo-button.png">
-						</div>
-						<div class="col-xs-4 col-sm-2">
-							<img data-provider="google" ng-click="signinSocial('google')" class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="Google" src="https://oauth.io/api/providers/google/logo-button.png">
-						</div>
-						<div class="col-xs-4 col-sm-2">
-							<img data-provider="linkedin" ng-click="signinSocial('linkedin')" class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="Linkedin" src="https://oauth.io/api/providers/linkedin/logo-button.png">
-						</div>
-						<div class="col-xs-4 col-sm-2">
-							<img data-provider="github" ng-click="signinSocial('github')" class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="Github" src="https://oauth.io/api/providers/github/logo-button.png">
-						</div>
-						<div class="col-xs-4 col-sm-2">
-							<img data-provider="vk" ng-click="signinSocial('vk')" class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="VK" src="https://oauth.io/api/providers/vk/logo-button.png">
+						<div ng-repeat="provider in providersAvailable" class="col-xs-4 col-sm-2" ng-class="{'col-sm-offset-1': provider == 'facebook'}">
+							<img class="img-responsive img-rounded" data-toggle="tooltip" tooltip="{{provider}}" ng-src="https://oauth.io/api/providers/{{provider}}/logo-button.png" ng-click="signinSocial(provider)">
 						</div>
 					</div>
 					<pre style="margin-top:15px;" ng-show="code">

@@ -60,7 +60,6 @@ angular
       'twitter',
       'google',
       'linkedin',
-      'github',
-      'vk'
+      'github'
     ];
   });

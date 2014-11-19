@@ -11,23 +11,8 @@
         			<h3><span>Sign up with</span></h3>
 		  			<p ng-show="errorSocial" class="alert alert-danger">An error occured while trying to registering you. Do you already have an account? <a href="#/signin">signin</a></p>
 					<div class="row social-container signup">
-						<div class="col-xs-4 col-sm-2">
-							<img class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="Twitter" src="https://oauth.io/api/providers/twitter/logo-button.png" data-provider="twitter" ng-click="signupSocial('twitter')">
-						</div>
-						<div class="col-xs-4 col-sm-2">
-							<img data-provider="facebook" ng-click="signupSocial('facebook')" class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="Facebook" src="https://oauth.io/api/providers/facebook/logo-button.png">
-						</div>
-						<div class="col-xs-4 col-sm-2">
-							<img data-provider="google" ng-click="signupSocial('google')" class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="Google" src="https://oauth.io/api/providers/google/logo-button.png">
-						</div>
-						<div class="col-xs-4 col-sm-2">
-							<img data-provider="linkedin" ng-click="signupSocial('linkedin')" class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="Linkedin" src="https://oauth.io/api/providers/linkedin/logo-button.png">
-						</div>
-						<div class="col-xs-4 col-sm-2">
-							<img data-provider="github" ng-click="signupSocial('github')" class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="Github" src="https://oauth.io/api/providers/github/logo-button.png">
-						</div>
-						<div class="col-xs-4 col-sm-2">
-							<img data-provider="vk" ng-click="signupSocial('vk')" class="img-responsive img-rounded" data-toggle="tooltip" data-placement="top" title="VK" src="https://oauth.io/api/providers/vk/logo-button.png">
+						<div ng-repeat="provider in providersAvailable" class="col-xs-4 col-sm-2" ng-class="{'col-sm-offset-1': provider == 'facebook'}">
+							<img class="img-responsive img-rounded" data-toggle="tooltip" tooltip="{{provider}}" ng-src="https://oauth.io/api/providers/{{provider}}/logo-button.png" ng-click="signupSocial(provider)">
 						</div>
 					</div>
 					<pre style="margin-top:15px;" ng-show="code">
