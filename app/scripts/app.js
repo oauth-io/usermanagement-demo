@@ -48,9 +48,8 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  }).run(function ($rootScope, User, Materia) {
-    Materia.setOAuthdURL('http://iostaging.oauthserver.com');
-    User.initialize('ZamGgPBUtpLOYv21t-WQAhoULcY');
+  }).run(function ($rootScope, User) {
+    User.initialize('MpnCNnhVAq_zL089ua883AevC1o');
     $rootScope.isLogged = User.isLogged();
     if ($rootScope.isLogged) {
       $rootScope.me = User.getIdentity();

@@ -52,7 +52,6 @@ angular.module('usermanagementTestApp')
   	};
 
   	$scope.editData = function(data) {
-  		console.log('editData', data);
   		var instance = $modal.open({
 			templateUrl: 'views/modal/data.html',
 			controller: 'DataModalCtrl',

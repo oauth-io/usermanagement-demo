@@ -32,7 +32,6 @@ angular.module('usermanagementTestApp')
         $scope.errorSocial = null;
 		OAuth.popup(provider).done(function(result) {
             User.signup(result).done(function(user) {
-            	console.log('signed up', user);
                 $rootScope.isLogged = true;
                 $rootScope.me = user;
                 $location.path('/user');

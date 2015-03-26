@@ -21,7 +21,7 @@
 		<tr ng-repeat="data in editableData" ng-init="data.mouseover = false" ng-mouseout="data.mouseover = false" ng-mouseover="data.mouseover = true">
 			<td style="height: 40px;">{{data.key}}</td>
 			<td>{{data.value|limitTo:65}}<span ng-show="data.value.length > 75">...</span></td>
-			<td ng-show="data.mouseover" style="width:65px">
+			<td ng-show="data.mouseover" style="width:75px">
 				<button ng-click="editData(data)" class="btn text-center btn-default btn-xs"><i style="position:relative; top:1px;left:1px" class="fa fa-edit"></i></button>
 				<button ng-click="removeData(data)" class="btn text-center btn-default btn-xs" ng-hide="data.key == 'firstname' || data.key == 'lastname'"><i class="fa fa-remove"></i></button>
 			</td>

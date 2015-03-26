@@ -32,26 +32,33 @@ angular.module('usermanagementTestApp')
 	$scope.signinSocial = function(provider) {
 		$scope.errorSocial = null;
 		OAuth.popup(provider).done(function(result) {
+
             User.signin(result).done(function(user) {
                 $rootScope.isLogged = true;
                 $rootScope.me = user;
                 $location.path('/user');
                 $rootScope.$apply();
             }).fail(function(err) {
-            	if (err.responseJSON.data.email && err.responseJSON.data.email === 'missing') {
-            		$modal.open({
-            			controller: 'EmailModalCtrl',
-            			templateUrl: 'views/modal/email.html',
-            			resolve: {
-            				data: function() { return result; }
-            			}
-            		});
+            	if (err &&
+                    err.responseJSON &&
+                    err.responseJSON.data &&
+                    err.responseJSON.data.email &&
+                    err.responseJSON.data.email === 'missing') {
+                		$modal.open({
+                			controller: 'EmailModalCtrl',
+                			templateUrl: 'views/modal/email.html',
+                			resolve: {
+                				data: function() { return result; }
+                			}
+                		});
             	}
             	else {
             		$scope.errorSocial = err;
             		$scope.$apply();
 		        }
             });
+        }).fail(function(err) {
+            console.log(err);
         });
 	};
   });
