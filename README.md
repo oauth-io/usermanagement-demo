@@ -11,7 +11,7 @@ Installation
 
 You need to enable the feature in your OAuth.io dashboard in the `users` tab. For that, you need to get API Key from stormpath and copy paste them in OAuth.io.
 
-Install the OAuth.io javascript SDK from the branch feature/refactoring: https://github.com/oauth-io/oauth-js/tree/feature/refactoring
+Install the [OAuth.io javascript SDK](https://github.com/oauth-io/oauth-js)
 
 Signup
 ------
