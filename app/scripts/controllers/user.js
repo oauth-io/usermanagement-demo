@@ -8,7 +8,7 @@
  * Controller of the usermanagementTestApp
  */
 angular.module('usermanagementTestApp')
-  .controller('UserCtrl', function ($rootScope, $scope, $location, $modal, User, OAuth) {
+  .controller('UserCtrl', function ($rootScope, $scope, $location, $modal, $timeout, User, OAuth) {
   	$rootScope.menu = 'user';
 
   	if ( ! User.isLogged()) {
@@ -27,11 +27,11 @@ angular.module('usermanagementTestApp')
   			OAuth.popup(provider).done(function(res) {
   				$rootScope.me.addProvider(res).done(function() {
   					$scope.editableData = $rootScope.me.getEditableData();
-  					$scope.$apply();
+  					$timeout(angular.noop, 0);
   				}).fail(function(err) {
   					window.alert('error: ' + JSON.stringify(err));
   				});
-	  			$rootScope.$apply();
+	  			$timeout(angular.noop, 0)
   			});
   		}
   	};

@@ -8,7 +8,7 @@
  * Controller of the usermanagementTestApp
  */
 angular.module('usermanagementTestApp')
-  .controller('SigninCtrl', function ($rootScope, $scope, $location, $modal, OAuth, User) {
+  .controller('SigninCtrl', function ($rootScope, $scope, $location, $modal, $timeout, OAuth, User) {
   	$rootScope.menu = 'signin';
 
 
@@ -22,10 +22,10 @@ angular.module('usermanagementTestApp')
             $rootScope.me = user;
             $rootScope.isLogged = true;
 	  		$location.path('/user');
-	  		$rootScope.$apply();
+	  		$timeout(angular.noop, 0)
         }).fail(function(err) {
             $scope.errorEmailPW = err;
-            $scope.$apply();
+            $timeout(angular.noop, 0)
         });
 	};
 
@@ -37,7 +37,7 @@ angular.module('usermanagementTestApp')
                 $rootScope.isLogged = true;
                 $rootScope.me = user;
                 $location.path('/user');
-                $rootScope.$apply();
+                $timeout(angular.noop, 0)
             }).fail(function(err) {
             	if (err &&
                     err.responseJSON &&
@@ -54,7 +54,7 @@ angular.module('usermanagementTestApp')
             	}
             	else {
             		$scope.errorSocial = err;
-            		$scope.$apply();
+            		$timeout(angular.noop, 0)
 		        }
             });
         }).fail(function(err) {

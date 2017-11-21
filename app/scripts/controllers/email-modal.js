@@ -8,7 +8,7 @@
  * Controller of the usermanagementTestApp
  */
 angular.module('usermanagementTestApp')
-  .controller('EmailModalCtrl', function ($rootScope, $scope, $location, $modalInstance, User, data) {
+  .controller('EmailModalCtrl', function ($rootScope, $scope, $location, $modalInstance, $timeout, User, data) {
   	if (User.isLogged()) {
   		$modalInstance.dismiss();
   		$location.path('/user');
@@ -21,7 +21,7 @@ angular.module('usermanagementTestApp')
             $rootScope.me = user;
             $location.path('/user');
   			$modalInstance.close(user);
-            $rootScope.$apply();
+			$timeout(angular.noop, 0)
   		}).fail(function(err) {
   			window.alert('error:' + JSON.stringify(err));
   		});

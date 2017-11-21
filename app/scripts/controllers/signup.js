@@ -8,7 +8,7 @@
  * Controller of the usermanagementTestApp
  */
 angular.module('usermanagementTestApp')
-  .controller('SignupCtrl', function ($rootScope, $scope, $location, $modal, OAuth, User) {
+  .controller('SignupCtrl', function ($rootScope, $scope, $location, $timeout, $modal, OAuth, User) {
   	$rootScope.menu = 'signup';
 
   	if (User.isLogged()) {
@@ -21,10 +21,10 @@ angular.module('usermanagementTestApp')
             $rootScope.isLogged = true;
             $rootScope.me = user;
             $location.path('/user');
-            $rootScope.$apply();
+            $timeout(angular.noop, 0)
 		}).fail(function(err) {
 			$scope.errorForm = err;
-            $scope.$apply();
+            $timeout(angular.noop, 0)
 		});
 	};
 
@@ -35,7 +35,7 @@ angular.module('usermanagementTestApp')
                 $rootScope.isLogged = true;
                 $rootScope.me = user;
                 $location.path('/user');
-                $rootScope.$apply();
+                $timeout(angular.noop, 0)
             }).fail(function(err) {
             	if (err.responseJSON.data.email && err.responseJSON.data.email === 'missing') {
             		$modal.open({
@@ -48,7 +48,7 @@ angular.module('usermanagementTestApp')
             	}
             	else {
                     $scope.errorSocial = err;
-                    $scope.$apply();
+                    $timeout(angular.noop, 0)
             	}
             });
         });
